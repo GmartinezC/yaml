@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+#apiVersion: v1
+kind: Deployment
+metadata:
+  name: wildfly
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wildfly
+    spec:
+      containers:
+      - name: wildfly
+        image: registry.access.redhat.com/jboss-eap-7/eap70-openshift  
+        ports:
+        - containerPort: 8080
+          name: web
+        - containerPort: 9990
+          name: admin
